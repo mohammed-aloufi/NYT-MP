@@ -50,14 +50,14 @@ data class ArticleDto(
     val url: String? = null,
 ) {
     fun toArticle(): Article? {
-        return if (abstract == null || byLine == null || id == null || publishedDate == null || title == null || media == null) null
+        return if (abstract == null || byLine == null || id == null || publishedDate == null || title == null || media.isNullOrEmpty()) null
         else Article(
             abstract = abstract,
             byLine = byLine,
             desFacet = desFacet ?: emptyList(),
             geoFacet = geoFacet ?: emptyList(),
             id = id,
-            media = media.mapNotNull { it.toMedia() },
+            media = media.firstNotNullOf { it.toMedia() },
             publishedDate = publishedDate,
             section = section ?: "",
             subSection = subSection ?: "",

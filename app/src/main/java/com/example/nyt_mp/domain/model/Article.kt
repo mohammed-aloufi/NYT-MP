@@ -6,7 +6,7 @@ data class Article(
     val desFacet: List<String>,
     val geoFacet: List<String>,
     val id: Long,
-    val media: List<Media>,
+    val media: Media,
     val publishedDate: String,
     val section: String,
     val subSection: String,
