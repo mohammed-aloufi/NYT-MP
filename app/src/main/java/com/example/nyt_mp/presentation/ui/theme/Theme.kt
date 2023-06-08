@@ -1,4 +1,4 @@
-package com.example.nyt_mp.ui.theme
+package com.example.nyt_mp.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
