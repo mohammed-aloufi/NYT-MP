@@ -9,9 +9,8 @@ import retrofit2.http.Query
 
 interface MostPopularApiService {
 
-    @GET("mostpopular/v2/viewed/{period}.json")
+    @GET("mostpopular/v2/viewed/1.json")
     suspend fun getMostPopularArticles(
-        @Path("period") page: Int,
         @Query("api-key") apiKey: String = BuildConfig.NY_TIMES_MP_API_KEY,
     ): Response<MostPopularArticlesResponse>
 }
