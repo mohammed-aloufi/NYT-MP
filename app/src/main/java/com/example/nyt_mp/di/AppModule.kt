@@ -25,4 +25,9 @@ object AppModule {
             .create(MostPopularApiService::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun providePagingSource(apiService: MostPopularApiService): PagingSource {
+        return PagingSource(apiService)
+    }
 }
