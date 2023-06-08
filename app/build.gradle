@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp' version '1.7.20-1.0.8'
 }
 
 android {
@@ -40,6 +41,7 @@ android {
     }
     buildFeatures {
         compose true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion '1.3.2'
@@ -48,6 +50,11 @@ android {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
+    }
+    applicationVariants.all { variant ->
+        variant.addJavaSourceFoldersToModel(
+                new File(buildDir, "generated/ksp/${variant.name}/kotlin")
+        )
     }
 }
 
@@ -95,4 +102,12 @@ dependencies {
 
     // Coil - Jetpack compose
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    // Paging 3
+    implementation 'androidx.paging:paging-compose:1.0.0-alpha20'
+
+    // Compose Nav Destinations
+    implementation 'io.github.raamcosta.compose-destinations:core:1.7.33-beta'
+    ksp 'io.github.raamcosta.compose-destinations:ksp:1.7.33-beta'
+    implementation 'io.github.raamcosta.compose-destinations:animations-core:1.7.33-beta'
 }
