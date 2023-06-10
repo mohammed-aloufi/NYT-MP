@@ -24,7 +24,7 @@ class MostPopularArticleRepoImpl @Inject constructor(
                 } ?: emptyList()
                 emit(NetworkResult.Success(body))
             } else {
-                emit(NetworkResult.Failure(response.errorBody()?.string() ?: response.message()))
+                emit(NetworkResult.Failure(response.message()))
             }
         } catch (e: Exception) {
             Log.e(TAG, "getMostPopularArticles: ", e)

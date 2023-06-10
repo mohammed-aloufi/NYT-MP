@@ -84,7 +84,7 @@ class HomeViewModelTest {
     fun `getMostPopularArticles(), FAILURE api returns error, articleState error must not be null`() = runTest {
         Mockito.`when`(apiService.getMostPopularArticles()).thenReturn(Response.error(500, "Error".toResponseBody()))
         viewModel.getMostPopularArticles()
-        assertThat(viewModel.articleState.value.error).isEqualTo("Error")
+        assertThat(viewModel.articleState.value.error).isNotNull()
     }
 
     /**

@@ -1,7 +1,6 @@
 package com.example.nyt_mp.di
 
 import android.content.Context
-import com.example.nyt_mp.BuildConfig
 import com.example.nyt_mp.data.remote.MostPopularApiService
 import com.example.nyt_mp.data.repository.MostPopularArticleRepoImpl
 import com.example.nyt_mp.domain.repository.MostPopularArticleRepo
@@ -9,6 +8,7 @@ import com.example.nyt_mp.domain.usecase.FilterArticlesUseCase
 import com.example.nyt_mp.domain.usecase.GetSectionListUseCase
 import com.example.nyt_mp.utils.ConnectivityObserver
 import com.example.nyt_mp.utils.ConnectivityObserverImpl
+import com.example.nyt_mp.utils.Constants.BASE_URL
 import com.example.nyt_mp.utils.DefaultDispatchers
 import com.example.nyt_mp.utils.DispatcherProvider
 import dagger.Module
@@ -50,7 +50,7 @@ object AppModule {
         okHttpClient: OkHttpClient,
     ): MostPopularApiService {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.NY_TIME_BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

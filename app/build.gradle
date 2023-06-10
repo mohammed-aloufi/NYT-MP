@@ -6,6 +6,10 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def localPropertiesFile = rootProject.file("local.properties")
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(localPropertiesFile))
+
 android {
     namespace 'com.example.nyt_mp'
     compileSdk 33
@@ -22,9 +26,7 @@ android {
             useSupportLibrary true
         }
 
-        buildConfigField("String","NY_TIMES_MP_API_KEY", NY_TIMES_MP_API_KEY)
-        buildConfigField("String","NY_TIME_BASE_URL", NY_TIME_BASE_URL)
-
+        buildConfigField "String", "NY_TIMES_MP_API_KEY", localProperties['NY_TIMES_MP_API_KEY']
     }
 
     buildTypes {

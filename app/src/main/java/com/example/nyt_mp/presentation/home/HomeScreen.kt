@@ -26,13 +26,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.Red
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.nyt_mp.R
 import com.example.nyt_mp.presentation.home.components.AppTopAppBar
 import com.example.nyt_mp.presentation.home.components.ArticleItem
+import com.example.nyt_mp.presentation.home.components.ErrorScreen
 import com.example.nyt_mp.presentation.home.components.NoInternetConnection
 import com.example.nyt_mp.presentation.home.components.SectionsList
 import com.example.nyt_mp.presentation.home.components.Title
+import com.example.nyt_mp.presentation.ui.theme.GreyText
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -110,9 +117,7 @@ fun HomeScreen(
         }
 
         !articlesState.error.isNullOrEmpty() -> {
-            Text(
-                text = articlesState.error!!
-            )
+            ErrorScreen(articlesState.error!!)
         }
         else -> {
         }
