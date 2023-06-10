@@ -1,4 +1,4 @@
-package com.example.nyt_mp.presentation.home.components
+package com.example.nyt_mp.presentation.common
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

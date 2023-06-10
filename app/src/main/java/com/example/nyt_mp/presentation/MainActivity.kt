@@ -10,7 +10,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.navigation.compose.rememberNavController
-import com.example.nyt_mp.presentation.home.NavGraphs
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.example.nyt_mp.presentation.ui.theme.NYTMPTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController

@@ -1,5 +1,6 @@
 package com.example.nyt_mp.presentation.home.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,7 +31,7 @@ fun ArticleItem(
 ) {
     Row(
         modifier = Modifier
-//            .clickable { onClick() }
+            .clickable { onClick() }
             .padding(horizontal = 20.dp, vertical = 10.dp)
             .wrapContentHeight()
             .fillMaxWidth()
