@@ -1,12 +1,20 @@
 package com.example.nyt_mp.di
 
+import android.content.Context
 import com.example.nyt_mp.BuildConfig
 import com.example.nyt_mp.data.remote.MostPopularApiService
 import com.example.nyt_mp.data.repository.MostPopularArticleRepoImpl
 import com.example.nyt_mp.domain.repository.MostPopularArticleRepo
+import com.example.nyt_mp.domain.usecase.FilterArticlesUseCase
+import com.example.nyt_mp.domain.usecase.GetSectionListUseCase
+import com.example.nyt_mp.utils.ConnectivityObserver
+import com.example.nyt_mp.utils.ConnectivityObserverImpl
+import com.example.nyt_mp.utils.DefaultDispatchers
+import com.example.nyt_mp.utils.DispatcherProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -53,5 +61,27 @@ object AppModule {
     @Singleton
     fun provideMostPopularArticleRepo(apiService: MostPopularApiService): MostPopularArticleRepo {
         return MostPopularArticleRepoImpl(apiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideConnectivityObserver(
+        @ApplicationContext context: Context,
+    ): ConnectivityObserver {
+        return ConnectivityObserverImpl(context)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetSectionListUseCase() = GetSectionListUseCase()
+
+    @Singleton
+    @Provides
+    fun provideFilterArticlesUseCase() = FilterArticlesUseCase()
+
+    @Provides
+    @Singleton
+    fun provideDispatcherProvider(): DispatcherProvider {
+        return DefaultDispatchers()
     }
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NYT-MP</string>
+    <string name="lbl_no_internet_message">No internet connection, please check your connection</string>
+    <string name="lbl_no_internet">No internet connection</string>
 </resources>

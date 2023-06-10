@@ -5,4 +5,6 @@ object Constants {
     const val MEDIA_FORMAT_THUMBNAIL = "Standard Thumbnail"
     const val MEDIA_FORMAT_210 = "mediumThreeByTwo210"
     const val MEDIA_FORMAT_440 = "mediumThreeByTwo440"
+
+    const val ALL = "All"
 }
