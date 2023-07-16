@@ -78,7 +78,7 @@ class HomeViewModelTest {
     fun `getMostPopularArticles(), SUCCESS api returns 3 Articles dtos and one of them is missing a required value, then returns 2 mapped Articles`() = runTest {
         Mockito.`when`(apiService.getMostPopularArticles()).thenReturn(Response.success(getMostPopularArticlesResponseWithOneArticleMissingATitle()))
         viewModel.getMostPopularArticles()
-        assertThat(viewModel.articleState.value.articles.size).isEqualTo(4)
+        assertThat(viewModel.articleState.value.articles.size).isEqualTo(2)
     }
 
     @Test
