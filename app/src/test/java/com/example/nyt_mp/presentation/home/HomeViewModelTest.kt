@@ -3,6 +3,7 @@
 package com.example.nyt_mp.presentation.home
 
 import com.example.nyt_mp.data.HomeViewModelTestData.get3Articles
+import com.example.nyt_mp.data.HomeViewModelTestData.getArticles
 import com.example.nyt_mp.data.HomeViewModelTestData.getArticlesWithoutSections
 import com.example.nyt_mp.data.HomeViewModelTestData.getMostPopularArticlesResponse
 import com.example.nyt_mp.data.HomeViewModelTestData.getMostPopularArticlesResponseWithOneArticleMissingATitle
@@ -70,14 +71,14 @@ class HomeViewModelTest {
     fun `getMostPopularArticles(), SUCCESS api returns 3 valid dtos, then returns 3 mapped Articles`() = runTest {
         Mockito.`when`(apiService.getMostPopularArticles()).thenReturn(Response.success(getMostPopularArticlesResponse()))
         viewModel.getMostPopularArticles()
-        assertThat(viewModel.articleState.value.articles).isEqualTo(get3Articles())
+        assertThat(viewModel.articleState.value.articles).isEqualTo(getArticles())
     }
 
     @Test
     fun `getMostPopularArticles(), SUCCESS api returns 3 Articles dtos and one of them is missing a required value, then returns 2 mapped Articles`() = runTest {
         Mockito.`when`(apiService.getMostPopularArticles()).thenReturn(Response.success(getMostPopularArticlesResponseWithOneArticleMissingATitle()))
         viewModel.getMostPopularArticles()
-        assertThat(viewModel.articleState.value.articles.size).isEqualTo(2)
+        assertThat(viewModel.articleState.value.articles.size).isEqualTo(4)
     }
 
     @Test

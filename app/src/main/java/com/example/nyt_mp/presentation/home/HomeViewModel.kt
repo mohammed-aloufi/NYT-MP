@@ -40,7 +40,7 @@ class HomeViewModel @Inject constructor(
 
      fun observeNetworkState() = viewModelScope.launch(defaultDispatchers.main) {
         connectivityObserver.observeNetworkState().collectLatest { isOnline ->
-            _isOnline.value = isOnline
+            _isOnline.value = isOnline && sectionsState.value.sections.isNotEmpty()
         }
     }
 
