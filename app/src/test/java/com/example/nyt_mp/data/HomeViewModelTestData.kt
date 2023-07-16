@@ -538,4 +538,6 @@ object HomeViewModelTestData {
             )
         )
     )
+
+    fun getArticles() = getArticlesDto().mapNotNull { it.toArticle() }
 }
